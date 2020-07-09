@@ -2,9 +2,12 @@
 # description attributes.
 
 class Room:
-    def __init__(self, name, description):
+    def __init__(self, name, desc):
         self.name = name
-        self.description = description
+        self.desc = desc
 
-    def __repr__(self):
-        return str(f'{self.name}')
+    n_to = ''
+    s_to = ''
+    e_to = ''
+    w_to = ''
+        
