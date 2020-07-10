@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 # Declare all the rooms
 
 room = {
@@ -37,6 +38,11 @@ room['treasure'].s_to = room['narrow']
 # Main
 #
 
+# adding items to game
+
+dagger = Item('dagger', 'A used dagger...')
+potion = Item('potion', 'For healing purposes...')
+
 # Make a new player object that is currently in the 'outside' room.
 
 # Write a loop that:
@@ -52,11 +58,20 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 player = Player("Travis", room['outside'])
+player.items = [dagger, potion]
+
+# test to see if class is working properly
+print(player.items)
 
 
 quit = False
 
 while not quit:
+    player_input = input('Ready to begin your adventure?: ').lower()
+    if player_input == 'list':
+        print('The following items are in this room: \n')
+        for item in player.currentRoom.items:
+            print(f'{item.name}: {item.description}')
     cmd = input("Enter a direction:\nEast\nWest\nNorth\nSouth\nor quit----\n")
     cmd = cmd.lower().strip()[0]
     if cmd == 'n' or cmd == 'e' or cmd == 'w' or cmd == 's':
